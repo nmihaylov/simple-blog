@@ -2,11 +2,21 @@
 # http://symfony.com/doc/current/security.html
 security:
     access_denied_url: /
+    encoders:
+        # Our user class and the algorithm we'll use to encode passwords
+        # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+        MainBundle\Entity\User: bcrypt
 
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        # in this example, users are stored via Doctrine in the database
+        # To see the users at src/AppBundle/DataFixtures/ORM/LoadFixtures.php
+        # To load users from somewhere else: http://symfony.com/doc/current/cookbook/security/custom_provider.html
+        database_users:
+            entity: { class: MainBundle:User, property: username }
+#    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+#    providers:
+#        in_memory:
+#            memory: ~
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -23,3 +33,7 @@ security:
 
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
+    access_control:
+        # this is a catch-all for the admin area
+        # additional security lives in the controllers
+        - { path: '^/(%app_locales%)/admin', roles: ROLE_ADMIN }
