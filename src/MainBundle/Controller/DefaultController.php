@@ -12,6 +12,10 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $this->addFlash('default', 'This is danger!');
+        $this->addFlash('warning', 'This is warning!');
+        $this->addFlash('success', 'This is success!');
+        $this->addFlash('info', 'This is info!');
         return $this->render('default/index.html.twig');
     }
 }
