@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", name="user_register")
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -34,7 +34,7 @@ class UserController extends Controller
             return $this->redirectToRoute("home");
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('user/register.html.twig', [
             'form' => $form->createView()
         ]);
     }
