@@ -31,6 +31,14 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
+            $mailer = $this->get('mailer');
+            $message = new \Swift_Message();
+            $message->setFrom('viperatt@gmail.com');
+            $message->setTo($user->getUsername());
+            $message->setSubject('Hello test');
+            $message->setBody('test body');
+            $result = $mailer->send($message);
+
             return $this->redirectToRoute("home");
         }
 
