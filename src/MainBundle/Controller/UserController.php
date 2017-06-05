@@ -33,10 +33,10 @@ class UserController extends Controller
 
             $mailer = $this->get('mailer');
             $message = new \Swift_Message();
-            $message->setFrom('viperatt@gmail.com');
+            $message->setFrom('nmihaylov@novacore.bg');
             $message->setTo($user->getUsername());
-            $message->setSubject('Hello test');
-            $message->setBody('test body');
+            $message->setSubject('Hello! - test email');
+            $message->setBody('test email');
             $result = $mailer->send($message);
 
             return $this->redirectToRoute("home");
