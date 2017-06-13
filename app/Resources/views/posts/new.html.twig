@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}New post{% endblock %}
+
+{% block body %}
+    <div class="well col-sm-6 col-sm-offset-3">
+        <legend>Add new post</legend>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_row(form._token) }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary submit-btn">add post</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

@@ -113,27 +113,27 @@ class Post
     }
 
     /**
-     * Set date
+     * Set publishedAt
      *
      * @param \DateTime $date
      *
      * @return Post
      */
-    public function setDate($date)
+    public function setPublishedAt($date)
     {
-        $this->date = $date;
+        $this->publishedAt = $date;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get publishedAt
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getPublishedAt()
     {
-        return $this->date;
+        return $this->publishedAt;
     }
 
     /**

@@ -4,7 +4,13 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-ad sa wd sa d a sd as
+    {% for post in posts %}
+        <div class="well col-sm-5">
+            <h3>Title: {{ post.title }} </h3>
+            <p>Slug: {{ post.slug }} </p>
+            <p>Published at: {{ post.publishedAt|date('Y-m-d H:m') }}</p>
+        </div>
+    {% endfor %}
 {% endblock %}
 
 {% block stylesheets %}
