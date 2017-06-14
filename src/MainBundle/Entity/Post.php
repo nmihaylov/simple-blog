@@ -55,6 +55,14 @@ class Post
     private $slug;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
      * Get id
      *
      * @return int
@@ -159,5 +167,23 @@ class Post
     {
         return $this->slug;
     }
+
+    /**
+     * @return User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param User $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+
 }
 

@@ -4,13 +4,20 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    {% for post in posts %}
-        <div class="well col-sm-5">
-            <h3>Title: {{ post.title }} </h3>
-            <p>Slug: {{ post.slug }} </p>
-            <p>Published at: {{ post.publishedAt|date('Y-m-d H:m') }}</p>
-        </div>
-    {% endfor %}
+    <div class="row">
+        {% for post in posts %}
+            <div class="well col-sm-10">
+                <h4>Title: {{ post.title }} </h4>
+                <hr>
+                <p>Content: {{ post.content }}</p>
+                <div class="pull-right">
+                    <p>Slug: {{ post.slug }} </p>
+                    <p>Author: {{ post.author.username }}</p>
+                    <p>Published at: {{ post.publishedAt|date('Y-m-d H:m') }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
 
 {% block stylesheets %}

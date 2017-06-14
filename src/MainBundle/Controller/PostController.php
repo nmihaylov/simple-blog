@@ -15,9 +15,8 @@ class PostController extends Controller
      */
     public function add(Request $request){
         $post = new Post();
-//        TODO: setUser
-//        $user = $this->getUser();
-//        $post->setUser($user);
+        $user = $this->getUser();
+        $post->setAuthor($user);
         $now = new \DateTime('now');
         $post->setPublishedAt($now);
 
