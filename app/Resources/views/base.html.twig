@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('fa-comments-o.png') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-paper.min.css') }}">
+        {#<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-paper.min.css') }}">#}
+        {#<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-sandstone.min.css') }}">#}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-simplex.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
