@@ -184,6 +184,8 @@ class Post
         $this->author = $author;
     }
 
-
+//    public function __toString() {
+//        return $this->getTitle();
+//    }
 }
 

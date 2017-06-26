@@ -10,4 +10,7 @@ namespace MainBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllPaginated(){
+
+    }
 }

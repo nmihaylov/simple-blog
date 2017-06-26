@@ -17,7 +17,7 @@ class PostType extends AbstractType
         $builder->add('content', null, [
             'attr' => ['rows' => '10']
         ]);
-        $builder->add('publishedAt');
+//        $builder->add('publishedAt');
     }
 
     public function configureOptions(OptionsResolver $resolver)
