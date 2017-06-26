@@ -7,8 +7,7 @@
     <div class="well col-sm-6 col-sm-offset-3">
         <legend>Add new post</legend>
         {{ form_start(form) }}
-        {{ form_row(form.title) }}
-        {{ form_row(form.content) }}
+        {{ form_widget(form) }}
         {{ form_row(form._token) }}
         <div class="form-group">
             <button type="submit" class="btn btn-primary submit-btn">Add post</button>

@@ -22,12 +22,14 @@
             <div class="well col-sm-8 col-sm-offset-2">
                 <h4>{{ post.title }} </h4>
                 <hr>
-                <p>{{ post.content }}</p>
+                <p>{{ post.description }} </p>
+
+                <a class="btn btn-primary btn-xs" href="{{ path('view_post', {slug : post.slug}) }}">Read more here</a>
                 <div class="pull-right">
-                    <p>Slug: {{ post.slug }} </p>
+                    {#<p>Slug: {{ post.slug }} </p>#}
                     <p>Author: {{ post.author.username }}</p>
                     <p>Published at: {{ post.publishedAt|date('Y-m-d H:m') }}</p>
-                    <a href="{{ path('view_post', {slug : post.slug}) }}">Read more here</a>
+
                 </div>
             </div>
         {% endfor %}

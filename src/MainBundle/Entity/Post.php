@@ -34,6 +34,14 @@ class Post
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text")
      * @Assert\NotBlank(message="Enter content")
      * @Assert\Length(min=10, minMessage="Minimum 10 symbols")
@@ -182,6 +190,22 @@ class Post
     public function setAuthor($author)
     {
         $this->author = $author;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
 //    public function __toString() {

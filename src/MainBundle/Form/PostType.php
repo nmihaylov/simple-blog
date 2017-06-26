@@ -12,12 +12,17 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title', null, [
-            'attr' => ['autofocus' => true],
+            'attr' => [
+                'autofocus' => true,
+                'rows' => '1'
+            ],
+        ]);
+        $builder->add('description', null, [
+            'attr' => ['rows' => '2']
         ]);
         $builder->add('content', null, [
             'attr' => ['rows' => '10']
         ]);
-//        $builder->add('publishedAt');
     }
 
     public function configureOptions(OptionsResolver $resolver)
