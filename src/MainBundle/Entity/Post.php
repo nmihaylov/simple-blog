@@ -70,6 +70,22 @@ class Post
      */
     private $author;
 
+
+    /**
+     * @var Tag[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="MainBundle\Entity\Tag", cascade={"persist"})
+     * @ORM\JoinTable(name="post_tag")
+     * @Assert\Count(max="5", maxMessage="Maximum count of tags is 5")
+     */
+    private $tags;
+
+    public function __construct()
+    {
+        $this->publishedAt = new \DateTime();
+        $this->tags = new ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -206,6 +222,28 @@ class Post
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+
+    public function removeTag(Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
     }
 
 //    public function __toString() {

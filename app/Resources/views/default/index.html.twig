@@ -27,8 +27,11 @@
                 <a class="btn btn-primary btn-xs" href="{{ path('view_post', {slug : post.slug}) }}">Read more here</a>
                 <div class="pull-right">
                     {#<p>Slug: {{ post.slug }} </p>#}
-                    <p>Author: {{ post.author.username }}</p>
-                    <p>Published at: {{ post.publishedAt|date('Y-m-d H:m') }}</p>
+                    <p>
+                        <i class="fa fa-calendar"> </i> {{ post.publishedAt|date('Y-m-d H:m') }} &nbsp;
+                        <i class="fa fa-user-circle-o"> </i> {{ post.author.username }}
+                    </p>
+                    {#<p><i class="fa fa-tags"> </i> {% for tag in posts.tags %} <span class="label label-default"></span> {% endfor %} </p>#}
 
                 </div>
             </div>

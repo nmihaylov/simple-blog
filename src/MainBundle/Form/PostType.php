@@ -23,6 +23,9 @@ class PostType extends AbstractType
         $builder->add('content', null, [
             'attr' => ['rows' => '10']
         ]);
+        $builder->add('tags', null, [
+            'required' => false
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
