@@ -5,12 +5,14 @@ namespace MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Post
  *
  * @ORM\Table(name="posts")
  * @ORM\Entity(repositoryClass="MainBundle\Repository\PostRepository")
+ * @Vich\Uploadable
  */
 class Post
 {
@@ -79,6 +81,17 @@ class Post
      * @Assert\Count(max="5", maxMessage="Maximum count of tags is 5")
      */
     private $tags;
+
+
+//* @Assert\Valid()
+    /**
+     * @var Image
+     *
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\Image", inversedBy="posts", cascade={"persist"})
+     * @ORM\JoinColumn("image_id", referencedColumnName="id")
+
+     */
+    private $image;
 
     public function __construct()
     {
@@ -244,6 +257,22 @@ class Post
     public function setTags($tags)
     {
         $this->tags = $tags;
+    }
+
+    /**
+     * @return Image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param Image $image
+     */
+    public function setImage(Image $image)
+    {
+        $this->image = $image;
     }
 
 //    public function __toString() {

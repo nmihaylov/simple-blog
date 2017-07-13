@@ -53,6 +53,16 @@ knp_paginator:
         pagination: 'KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig'     # sliding pagination controls template
         sortable: 'KnpPaginatorBundle:Pagination:sortable_link.html.twig' # sort link template
 
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+        post_image:
+                uri_prefix:         '/images'
+                upload_destination: '%kernel.root_dir%/../web/images'
+                namer:              vich_uploader.namer_origname
+                inject_on_load:     false
+                delete_on_update:   true
+                delete_on_remove:   true
 # Doctrine Configuration
 doctrine:
     dbal:

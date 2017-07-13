@@ -17,7 +17,7 @@
             <h1>{{ post.title }}</h1>
             <p>{{ post.description }}</p>
         </div>
-        <div class="col-sm-4 pull-right"><img src="{{ asset('placeholder.png') }}" width="150"  alt=""></div>
+        <div class="col-sm-4 pull-right"><img src="{{ vich_uploader_asset(post.image, 'imageFile') }}" width="150"  alt="{{ post.image.imageName }}"> </div>
 
         <div class="col-sm-12">
             <hr>

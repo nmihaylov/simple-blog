@@ -26,6 +26,8 @@ class PostType extends AbstractType
         $builder->add('tags', null, [
             'required' => false
         ]);
+
+        $builder->add('image', ImageType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
