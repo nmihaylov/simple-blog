@@ -27,7 +27,9 @@ class PostType extends AbstractType
             'required' => false
         ]);
 
-        $builder->add('image', ImageType::class);
+        $builder->add('image', ImageType::class, [
+            'required' => false
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

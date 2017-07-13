@@ -23,7 +23,7 @@ class PostController extends Controller
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
             $post->setAuthor($user);
             $now = new \DateTime('now');
