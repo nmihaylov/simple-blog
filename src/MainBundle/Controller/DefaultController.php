@@ -3,6 +3,7 @@
 namespace MainBundle\Controller;
 
 use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
+use MainBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,4 +46,22 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/posts/{slug}", name="view_post")
+     *
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewAction(Post $post){
+
+//        if (!$post){
+////            throw $this->createNotFoundException('The post does not exist');
+//            throw $this->createNotFoundException('The product does not exist');
+//            throw new NotFoundHttpException('Sorry not existing!');
+//        }
+
+        return $this->render('posts/post.html.twig', [
+            'post' => $post
+        ]);
+    }
 }
