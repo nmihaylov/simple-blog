@@ -32,7 +32,7 @@ class DefaultController extends Controller
         $postsPaginated = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            4/*limit per page*/,
+            Post::NUM_ITEMS/*limit per page*/,
             [
                 'defaultSortFieldName' => 'post.publishedAt',
                 'defaultSortDirection' => 'desc',
@@ -47,7 +47,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/posts/{slug}", name="view_post")
+     * @Route("/post/{slug}", name="view_post")
      *
      * @param Post $post
      * @return \Symfony\Component\HttpFoundation\Response

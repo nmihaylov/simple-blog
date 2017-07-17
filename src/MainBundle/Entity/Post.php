@@ -16,6 +16,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Post
 {
+    const NUM_ITEMS = 5;
     /**
      * @var int
      *
