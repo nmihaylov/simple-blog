@@ -39,13 +39,17 @@
                         <td>{{ post.author.username }}</td>
                         <td>
                             <a href="{{ path('edit_post', {slug: post.slug}) }}" title="Edit"
-                               class="btn btn-default btn-xs"><i
-                                        class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i> Edit</a>
+                               class="btn btn-default btn-xs">
+                                <i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i>
+                                Edit
+                            </a>
                             <a href="{{ path('delete_post', {slug: post.slug}) }}" title="Delete"
                                class="btn btn-danger btn-xs"
-                               data-confirm="Are you sure you want to delete this post?"><i class="fa fa-trash-o fa-1x"
-                                                                                            aria-hidden="true"></i>
-                                Delete</a>
+                               data-confirm="Are you sure you want to delete this post?">
+                                <i class="fa fa-trash-o fa-1x" aria-hidden="true"></i>
+                                Delete
+                            </a>
+
                         </td>
                     </tr>
                     </tbody>

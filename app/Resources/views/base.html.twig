@@ -55,6 +55,16 @@
 
     {% block body %}{% endblock %}
 </div>
+
+{% block footer %}
+    <footer>
+        <div class="container modal-footer">
+            <p>&copy;2017 - Novacore blog test project</p>
+        </div>
+    </footer>
+{% endblock %}
+
+
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 {% block javascripts %}{% endblock %}

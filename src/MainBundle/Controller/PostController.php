@@ -99,7 +99,9 @@ class PostController extends Controller
             $post->setAuthor($user);
             $now = new \DateTime('now');
             $post->setPublishedAt($now);
-            $post->setSlug(preg_replace('/\s+/', '-', mb_strtolower(trim(strip_tags($post->getTitle())), 'UTF-8')));
+            $post->setSlug(preg_replace(
+                '/\s+/', '-', mb_strtolower(trim(strip_tags($post->getTitle())), 'UTF-8')
+            ));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);

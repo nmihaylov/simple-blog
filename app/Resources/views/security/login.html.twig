@@ -12,6 +12,7 @@
     <div class="well col-sm-6 col-sm-offset-3">
 
         <legend>Login</legend>
+
         <form method="post" action="{{ path('security_login') }}">
             <div class="form-group">
                 <label class="control-label required" for="_username"> Username </label>
@@ -23,6 +24,11 @@
                 <input class="form-control" id="_password" maxlength="255" name="_password" required="required"
                        type="password"/>
             </div>
+            {#<div class="form-group">#}
+                {#<input type="checkbox" id="remember_me" name="_remember_me"/>#}
+                {#<label for="remember_me">Keep me logged in</label>#}
+            {#</div>#}
+
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
 
             <div class="form-group">
