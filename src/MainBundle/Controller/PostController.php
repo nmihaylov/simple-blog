@@ -13,13 +13,12 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
  * @Route("/admin")
-
  */
 class PostController extends Controller
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="admin_page")
      */
     public function indexAction(Request $request)
     {
@@ -51,6 +50,7 @@ class PostController extends Controller
             'pagination' => $postsPaginated
         ]);
     }
+
     /**
      *
      * @Route("/add", name="add_post")
@@ -72,13 +72,62 @@ class PostController extends Controller
             $em->flush();
             $this->addFlash('success', 'Post added successfully!');
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('admin_page');
         }
 
-        return $this->render('posts/new.html.twig', [
+        return $this->render('admin/posts/new.html.twig', [
             'form' => $form->createView(),
             'post' => $post
         ]);
+    }
+
+    /**
+     * @Route("/edit/{slug}", name="edit_post")
+     *
+     * @param Post $post
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction(Post $post, Request $request)
+    {
+
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $post->setAuthor($user);
+            $now = new \DateTime('now');
+            $post->setPublishedAt($now);
+            $post->setSlug(preg_replace('/\s+/', '-', mb_strtolower(trim(strip_tags($post->getTitle())), 'UTF-8')));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+            $this->addFlash('success', 'Post edited successfully!');
+            return $this->redirectToRoute('admin_page');
+        }
+
+        return $this->render('admin/posts/edit.html.twig', [
+            'form' => $form->createView(),
+            'post' => $post
+        ]);
+    }
+
+    /**
+     * @Route("/delete/{slug}", name="delete_post")
+     *
+     * @param Post $post
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteAction(Post $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+        $this->addFlash('success', 'Post removed successfully!');
+        return $this->redirectToRoute('admin_page');
     }
 
 }

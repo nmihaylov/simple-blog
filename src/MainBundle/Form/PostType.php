@@ -28,7 +28,7 @@ class PostType extends AbstractType
         ]);
 
         $builder->add('image', ImageType::class, [
-            'required' => false
+            'required' => false,
         ]);
     }
 
